@@ -27,6 +27,9 @@ function misspell(word) {
 		wordSplit = word.replace(wordSplit[randomCharacter], eval("nearbykeys." + wordSplit[randomCharacter])[randomNearybyKey]).split("");
 	}
 
+	if (word == wordSplit.join("")) {
+		return misspell(wordSplit.join(""));
+	}
 	return wordSplit.join("");
 }
 
