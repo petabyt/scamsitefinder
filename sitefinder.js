@@ -74,7 +74,7 @@ function siteExists(boolean, data, html) {
 	if (boolean && data.endsWith("HTTP/1.0 200 OK")) {
 		document.getElementById('siteList').innerHTML += "<a href='" + sites[a] + "'>" + sites[a] + "</a><br>";
 		validated.push(sites[a]);
-		console.log(atob(html)) // need to make an entire html scam detector
+		//console.log(atob(html)) // need to make an entire html scam detector
 	}
 	a++;
 	next();
