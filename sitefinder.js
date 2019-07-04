@@ -51,8 +51,8 @@ function update() {
 			document.getElementById('siteList').children[1].outerHTML = "";
 		}		
 	} else {
-		document.getElementById('stats').innerHTML = "Generating 1000 sites... <br>" + (sites.length / 10) + "%";
-		if (sites.length == 1000) {
+		document.getElementById('stats').innerHTML = "Generating 10,000 sites... <br>" + (sites.length / 100) + "%";
+		if (sites.length == 10000) {
 			stop();
 			document.getElementById('stats').innerHTML += "<br>Validated " + a + " Site(s)...";
 			next();
