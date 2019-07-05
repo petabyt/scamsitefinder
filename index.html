@@ -2,6 +2,8 @@
 <html>
 <head>
 	<title>Scam Site Finder</title>
+	<script type="text/javascript" src="commonsites.js"></script>
+	<script type="text/javascript" src="popupfinder.js"></script>
 	<script type="text/javascript" src="nearbykeys.js"></script>
 	<script type="text/javascript" src="misspell.js"></script>
 	<script type="text/javascript" src="sitefinder.js"></script>
@@ -10,9 +12,14 @@
 <body>
 <h1>Scam Site Finder</h1>
 <p>*Warning - Your browser may crash. Also, visit the sites with caution.</p>
+<select id="method">
+	<option selected="selected">Misspell Common Names</option>
+	<option>Use common scam words</option>
+</select>
+<br>
 <select id="options">
-	<option selected="selected">Just generate sites</option>
-	<option>Generate and Validate Sites</option>
+	<option>Just generate sites</option>
+	<option selected="selected">Generate and Validate Sites</option>
 </select>
 <br>
 <button onclick="start()">Start</button><button onclick="stop()">Stop</button>

@@ -18,6 +18,14 @@ var names = [
 	"twitter"
 ];
 
+var domains = [
+	"com",
+	"net",
+	"tk",
+	"cf",
+	"ml"
+]
+
 var sites = [
 	
 ];
@@ -33,8 +41,14 @@ window.onload = function() {
 
 function start() {
 	interval = setInterval(function() {
-		var rand = Math.floor(Math.random() * names.length);
-		sites.push("http://" + misspell(names[rand]) + ".com")
+		if (document.getElementById('method').value == "Misspell common names") {
+			var rand = Math.floor(Math.random() * names.length);
+			var domain = domains[Math.floor(Math.random() * domains.length)];
+			domain = "com";
+			sites.push("http://" + misspell(names[rand]) + "." + domain)
+		} else {
+			sites.push(findPopup());
+		}
 
 		update();
 	}, 1);
@@ -71,10 +85,14 @@ function siteExists(boolean, data, html) {
 	HTTP/1.1 200 OK - scam site
 	*/
 
-	if (boolean && data.endsWith("HTTP/1.0 200 OK")) {
-		document.getElementById('siteList').innerHTML += "<a href='" + sites[a] + "'>" + sites[a] + "</a><br>";
-		validated.push(sites[a]);
-		//console.log(atob(html)) // need to make an entire html scam detector
+	if (boolean && data.endsWith("200 OK")) {
+		var noIp = atob(noIpSite)
+		var html = atob(html);
+		var phoneNumber = html.match(/^(\(?\d{3}\)?)([ .-])(\d{3})([ .-])(\d{4})$/g);
+		if (!html.includes("google.com/adsense/domains/caf.js")) { // Mostly found in ad sites and no IP sites
+			document.getElementById('siteList').innerHTML += "<a href='" + sites[a] + "'>" + sites[a] + "</a> | Numbers: " + phoneNumber + "<br>";
+			validated.push(sites[a]);
+		}
 	}
 	a++;
 	next();
