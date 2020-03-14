@@ -102,7 +102,7 @@ function next(){
 	document.getElementById('stats').innerHTML = "Generating 1000 sites... <br>" + (sites.length / 10) + "%";
 	document.getElementById('stats').innerHTML += "<br>Searched " + a + " Site(s). " + validated.length + " may be harmful.";
 	var js = document.createElement("SCRIPT");
-	js.src = "http://petabytes.duckdns.org/validate.php?site=" + sites[a];
+	js.src = "http://cookboardcompany.com/validate.php?site=" + sites[a];
 	js.type = "text/javascript";
 
 	document.getElementById('script').appendChild(js);
